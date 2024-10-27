@@ -19,7 +19,8 @@ tags:
   - name: Audio
     description: Turn audio into text or text into audio.
   - name: Chat
-    description: Given a list of messages comprising a conversation, the model will
+    description:
+      Given a list of messages comprising a conversation, the model will
       return a response.
   - name: Completions
     description: Given a prompt, the model will return one or more predicted
@@ -33,7 +34,8 @@ tags:
   - name: Batch
     description: Create large batches of API requests to run asynchronously.
   - name: Files
-    description: Files are used to upload documents that can be used with features
+    description:
+      Files are used to upload documents that can be used with features
       like Assistants and Fine-tuning.
   - name: Uploads
     description: Use Uploads to upload large files in multiple parts.
@@ -383,7 +385,8 @@ paths:
         name: Retrieve assistant
         group: assistants
         beta: true
-        returns: The [assistant](/docs/api-reference/assistants/object) object matching
+        returns:
+          The [assistant](/docs/api-reference/assistants/object) object matching
           the specified ID.
         examples:
           request:
@@ -697,7 +700,8 @@ paths:
       x-oaiMeta:
         name: Create transcription
         group: audio
-        returns: The [transcription object](/docs/api-reference/audio/json-object) or a
+        returns:
+          The [transcription object](/docs/api-reference/audio/json-object) or a
           [verbose transcription
           object](/docs/api-reference/audio/verbose-json-object).
         examples:
@@ -972,7 +976,8 @@ paths:
                     - /v1/chat/completions
                     - /v1/embeddings
                     - /v1/completions
-                  description: The endpoint to be used for all requests in the batch. Currently
+                  description:
+                    The endpoint to be used for all requests in the batch. Currently
                     `/v1/chat/completions`, `/v1/embeddings`, and
                     `/v1/completions` are supported. Note that `/v1/embeddings`
                     batches are also restricted to a maximum of 50,000 embedding
@@ -981,7 +986,8 @@ paths:
                   type: string
                   enum:
                     - 24h
-                  description: The time frame within which the batch should be processed.
+                  description:
+                    The time frame within which the batch should be processed.
                     Currently only `24h` is supported.
                 metadata:
                   type: object
@@ -1189,7 +1195,8 @@ paths:
       x-oaiMeta:
         name: Retrieve batch
         group: batch
-        returns: The [Batch](/docs/api-reference/batch/object) object matching the
+        returns:
+          The [Batch](/docs/api-reference/batch/object) object matching the
           specified ID.
         examples:
           request:
@@ -1249,7 +1256,8 @@ paths:
       operationId: cancelBatch
       tags:
         - Batch
-      summary: Cancels an in-progress batch. The batch will be in status `cancelling`
+      summary:
+        Cancels an in-progress batch. The batch will be in status `cancelling`
         for up to 10 minutes, before changing to `cancelled`, where it will have
         partial results (if any) available in the output file.
       parameters:
@@ -1269,7 +1277,8 @@ paths:
       x-oaiMeta:
         name: Cancel batch
         group: batch
-        returns: The [Batch](/docs/api-reference/batch/object) object matching the
+        returns:
+          The [Batch](/docs/api-reference/batch/object) object matching the
           specified ID.
         examples:
           request:
@@ -2477,7 +2486,8 @@ paths:
       x-oaiMeta:
         name: Retrieve file
         group: files
-        returns: The [File](/docs/api-reference/files/object) object matching the
+        returns:
+          The [File](/docs/api-reference/files/object) object matching the
           specified ID.
         examples:
           request:
@@ -2883,7 +2893,8 @@ paths:
       x-oaiMeta:
         name: Retrieve fine-tuning job
         group: fine-tuning
-        returns: The [fine-tuning](/docs/api-reference/fine-tuning/object) object with
+        returns:
+          The [fine-tuning](/docs/api-reference/fine-tuning/object) object with
           the given ID.
         examples:
           request:
@@ -2963,7 +2974,8 @@ paths:
       x-oaiMeta:
         name: Cancel fine-tuning
         group: fine-tuning
-        returns: The cancelled [fine-tuning](/docs/api-reference/fine-tuning/object)
+        returns:
+          The cancelled [fine-tuning](/docs/api-reference/fine-tuning/object)
           object.
         examples:
           request:
@@ -3024,7 +3036,8 @@ paths:
             The ID of the fine-tuning job to get checkpoints for.
         - name: after
           in: query
-          description: Identifier for the last checkpoint ID from the previous pagination
+          description:
+            Identifier for the last checkpoint ID from the previous pagination
             request.
           required: false
           schema:
@@ -3399,7 +3412,8 @@ paths:
       operationId: listModels
       tags:
         - Models
-      summary: Lists the currently available models, and provides basic information
+      summary:
+        Lists the currently available models, and provides basic information
         about each one such as the owner and availability.
       responses:
         "200":
@@ -3465,7 +3479,8 @@ paths:
       operationId: retrieveModel
       tags:
         - Models
-      summary: Retrieves a model instance, providing basic information about the model
+      summary:
+        Retrieves a model instance, providing basic information about the model
         such as the owner and permissioning.
       parameters:
         - in: path
@@ -3485,7 +3500,8 @@ paths:
       x-oaiMeta:
         name: Retrieve model
         group: models
-        returns: The [model](/docs/api-reference/models/object) object matching the
+        returns:
+          The [model](/docs/api-reference/models/object) object matching the
           specified ID.
         examples:
           request:
@@ -3830,7 +3846,8 @@ paths:
       parameters:
         - name: effective_at
           in: query
-          description: Return only events whose `effective_at` (Unix seconds) is in this
+          description:
+            Return only events whose `effective_at` (Unix seconds) is in this
             range.
           required: false
           schema:
@@ -3838,19 +3855,23 @@ paths:
             properties:
               gt:
                 type: integer
-                description: Return only events whose `effective_at` (Unix seconds) is greater
+                description:
+                  Return only events whose `effective_at` (Unix seconds) is greater
                   than this value.
               gte:
                 type: integer
-                description: Return only events whose `effective_at` (Unix seconds) is greater
+                description:
+                  Return only events whose `effective_at` (Unix seconds) is greater
                   than or equal to this value.
               lt:
                 type: integer
-                description: Return only events whose `effective_at` (Unix seconds) is less than
+                description:
+                  Return only events whose `effective_at` (Unix seconds) is less than
                   this value.
               lte:
                 type: integer
-                description: Return only events whose `effective_at` (Unix seconds) is less than
+                description:
+                  Return only events whose `effective_at` (Unix seconds) is less than
                   or equal to this value.
         - name: project_ids[]
           in: query
@@ -3862,7 +3883,8 @@ paths:
               type: string
         - name: event_types[]
           in: query
-          description: Return only events with a `type` in one of these values. For
+          description:
+            Return only events with a `type` in one of these values. For
             example, `project.created`. For all options, see the documentation
             for the [audit log object](/docs/api-reference/audit-logs/object).
           required: false
@@ -3872,7 +3894,8 @@ paths:
               $ref: "#/components/schemas/AuditLogEventType"
         - name: actor_ids[]
           in: query
-          description: Return only events performed by these actors. Can be a user ID, a
+          description:
+            Return only events performed by these actors. Can be a user ID, a
             service account ID, or an api key tracking ID.
           required: false
           schema:
@@ -3889,7 +3912,8 @@ paths:
               type: string
         - name: resource_ids[]
           in: query
-          description: Return only events performed on these targets. For example, a
+          description:
+            Return only events performed on these targets. For example, a
             project ID updated.
           required: false
           schema:
@@ -3934,7 +3958,8 @@ paths:
       x-oaiMeta:
         name: List audit logs
         group: audit-logs
-        returns: A list of paginated [Audit Log](/docs/api-reference/audit-logs/object)
+        returns:
+          A list of paginated [Audit Log](/docs/api-reference/audit-logs/object)
           objects.
         examples:
           request:
@@ -4057,7 +4082,8 @@ paths:
                 "has_more": false
               }
     post:
-      summary: Create an invite for a user to the organization. The invite must be
+      summary:
+        Create an invite for a user to the organization. The invite must be
         accepted by the user before they have access to the organization.
       operationId: inviteUser
       tags:
@@ -4124,7 +4150,8 @@ paths:
       x-oaiMeta:
         name: Retrieve invite
         group: administration
-        returns: The [Invite](/docs/api-reference/invite/object) object matching the
+        returns:
+          The [Invite](/docs/api-reference/invite/object) object matching the
           specified ID.
         examples:
           request:
@@ -4145,7 +4172,8 @@ paths:
                   "accepted_at": 1711471533
               }
     delete:
-      summary: Delete an invite. If the invite has already been accepted, it cannot be
+      summary:
+        Delete an invite. If the invite has already been accepted, it cannot be
         deleted.
       operationId: delete-invite
       tags:
@@ -4213,7 +4241,8 @@ paths:
           schema:
             type: boolean
             default: false
-          description: If `true` returns all projects including those that have been
+          description:
+            If `true` returns all projects including those that have been
             `archived`. Archived projects are not included by default.
       responses:
         "200":
@@ -4253,7 +4282,8 @@ paths:
                   "has_more": false
               }
     post:
-      summary: Create a new project in the organization. Projects can be created and
+      summary:
+        Create a new project in the organization. Projects can be created and
         archived, but cannot be deleted.
       operationId: create-project
       tags:
@@ -4319,7 +4349,8 @@ paths:
         name: Retrieve project
         group: administration
         description: Retrieve a project.
-        returns: The [Project](/docs/api-reference/projects/object) object matching the
+        returns:
+          The [Project](/docs/api-reference/projects/object) object matching the
           specified ID.
         examples:
           request:
@@ -4425,7 +4456,8 @@ paths:
       x-oaiMeta:
         name: List project API keys
         group: administration
-        returns: A list of [ProjectApiKey](/docs/api-reference/project-api-keys/object)
+        returns:
+          A list of [ProjectApiKey](/docs/api-reference/project-api-keys/object)
           objects.
         examples:
           request:
@@ -4498,7 +4530,8 @@ paths:
       x-oaiMeta:
         name: Retrieve project API key
         group: administration
-        returns: The [ProjectApiKey](/docs/api-reference/project-api-keys/object) object
+        returns:
+          The [ProjectApiKey](/docs/api-reference/project-api-keys/object) object
           matching the specified ID.
         examples:
           request:
@@ -4562,7 +4595,8 @@ paths:
       x-oaiMeta:
         name: Delete project API key
         group: administration
-        returns: Confirmation of the key's deletion or an error if the key belonged to a
+        returns:
+          Confirmation of the key's deletion or an error if the key belonged to a
           service account
         examples:
           request:
@@ -4587,7 +4621,8 @@ paths:
               }
   /organization/projects/{project_id}/archive:
     post:
-      summary: Archives a project in the organization. Archived projects cannot be
+      summary:
+        Archives a project in the organization. Archived projects cannot be
         used or updated.
       operationId: archive-project
       tags:
@@ -4704,7 +4739,8 @@ paths:
                   "has_more": false
               }
     post:
-      summary: Creates a new service account in the project. This also returns an
+      summary:
+        Creates a new service account in the project. This also returns an
         unredacted API key for the service account.
       operationId: create-project-service-account
       tags:
@@ -4846,7 +4882,8 @@ paths:
       x-oaiMeta:
         name: Delete project service account
         group: administration
-        returns: Confirmation of service account being deleted, or an error in case of
+        returns:
+          Confirmation of service account being deleted, or an error in case of
           an archived project, which has no service accounts
         examples:
           request:
@@ -4911,7 +4948,8 @@ paths:
       x-oaiMeta:
         name: List project users
         group: administration
-        returns: A list of [ProjectUser](/docs/api-reference/project-users/object)
+        returns:
+          A list of [ProjectUser](/docs/api-reference/project-users/object)
           objects.
         examples:
           request:
@@ -4981,7 +5019,8 @@ paths:
       x-oaiMeta:
         name: Create project user
         group: administration
-        returns: The created [ProjectUser](/docs/api-reference/project-users/object)
+        returns:
+          The created [ProjectUser](/docs/api-reference/project-users/object)
           object.
         examples:
           request:
@@ -5038,7 +5077,8 @@ paths:
       x-oaiMeta:
         name: Retrieve project user
         group: administration
-        returns: The [ProjectUser](/docs/api-reference/project-users/object) object
+        returns:
+          The [ProjectUser](/docs/api-reference/project-users/object) object
           matching the specified ID.
         examples:
           request:
@@ -5099,7 +5139,8 @@ paths:
       x-oaiMeta:
         name: Modify project user
         group: administration
-        returns: The updated [ProjectUser](/docs/api-reference/project-users/object)
+        returns:
+          The updated [ProjectUser](/docs/api-reference/project-users/object)
           object.
         examples:
           request:
@@ -5156,7 +5197,8 @@ paths:
       x-oaiMeta:
         name: Delete project user
         group: administration
-        returns: Confirmation that project has been deleted or an error in case of an
+        returns:
+          Confirmation that project has been deleted or an error in case of an
           archived project, which has no users
         examples:
           request:
@@ -5259,7 +5301,8 @@ paths:
       x-oaiMeta:
         name: Retrieve user
         group: administration
-        returns: The [User](/docs/api-reference/users/object) object matching the
+        returns:
+          The [User](/docs/api-reference/users/object) object matching the
           specified ID.
         examples:
           request:
@@ -6001,7 +6044,8 @@ paths:
         name: Retrieve thread
         group: threads
         beta: true
-        returns: The [thread](/docs/api-reference/threads/object) object matching the
+        returns:
+          The [thread](/docs/api-reference/threads/object) object matching the
           specified ID.
         examples:
           request:
@@ -6071,7 +6115,8 @@ paths:
         name: Modify thread
         group: threads
         beta: true
-        returns: The modified [thread](/docs/api-reference/threads/object) object
+        returns:
+          The modified [thread](/docs/api-reference/threads/object) object
           matching the specified ID.
         examples:
           request:
@@ -6193,7 +6238,8 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the [thread](/docs/api-reference/threads) the messages
+          description:
+            The ID of the [thread](/docs/api-reference/threads) the messages
             belong to.
         - name: limit
           in: query
@@ -6343,7 +6389,8 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the [thread](/docs/api-reference/threads) to create a
+          description:
+            The ID of the [thread](/docs/api-reference/threads) to create a
             message for.
       requestBody:
         required: true
@@ -6435,7 +6482,8 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the [thread](/docs/api-reference/threads) to which this
+          description:
+            The ID of the [thread](/docs/api-reference/threads) to which this
             message belongs.
         - in: path
           name: message_id
@@ -6454,7 +6502,8 @@ paths:
         name: Retrieve message
         group: threads
         beta: true
-        returns: The [message](/docs/api-reference/messages/object) object matching the
+        returns:
+          The [message](/docs/api-reference/messages/object) object matching the
           specified ID.
         examples:
           request:
@@ -7469,7 +7518,8 @@ paths:
         name: Modify run
         group: threads
         beta: true
-        returns: The modified [run](/docs/api-reference/runs/object) object matching the
+        returns:
+          The modified [run](/docs/api-reference/runs/object) object matching the
           specified ID.
         examples:
           request:
@@ -7595,7 +7645,8 @@ paths:
         name: Cancel a run
         group: threads
         beta: true
-        returns: The modified [run](/docs/api-reference/runs/object) object matching the
+        returns:
+          The modified [run](/docs/api-reference/runs/object) object matching the
           specified ID.
         examples:
           request:
@@ -7875,7 +7926,8 @@ paths:
         name: Retrieve run step
         group: threads
         beta: true
-        returns: The [run step](/docs/api-reference/run-steps/step-object) object
+        returns:
+          The [run step](/docs/api-reference/run-steps/step-object) object
           matching the specified ID.
         examples:
           request:
@@ -7954,7 +8006,8 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the [thread](/docs/api-reference/threads) to which this
+          description:
+            The ID of the [thread](/docs/api-reference/threads) to which this
             run belongs.
         - in: path
           name: run_id
@@ -7979,7 +8032,8 @@ paths:
         name: Submit tool outputs to run
         group: threads
         beta: true
-        returns: The modified [run](/docs/api-reference/runs/object) object matching the
+        returns:
+          The modified [run](/docs/api-reference/runs/object) object matching the
           specified ID.
         examples:
           - title: Default
@@ -8315,7 +8369,8 @@ paths:
       x-oaiMeta:
         name: Create upload
         group: uploads
-        returns: The [Upload](/docs/api-reference/uploads/object) object with status
+        returns:
+          The [Upload](/docs/api-reference/uploads/object) object with status
           `pending`.
         examples:
           request:
@@ -8365,7 +8420,8 @@ paths:
       x-oaiMeta:
         name: Cancel upload
         group: uploads
-        returns: The [Upload](/docs/api-reference/uploads/object) object with status
+        returns:
+          The [Upload](/docs/api-reference/uploads/object) object with status
           `cancelled`.
         examples:
           request:
@@ -8428,7 +8484,8 @@ paths:
       x-oaiMeta:
         name: Complete upload
         group: uploads
-        returns: The [Upload](/docs/api-reference/uploads/object) object with status
+        returns:
+          The [Upload](/docs/api-reference/uploads/object) object with status
           `completed` with an additional `file` property containing the created
           usable File object.
         examples:
@@ -8570,7 +8627,8 @@ paths:
         name: List vector stores
         group: vector_stores
         beta: true
-        returns: A list of [vector store](/docs/api-reference/vector-stores/object)
+        returns:
+          A list of [vector store](/docs/api-reference/vector-stores/object)
           objects.
         examples:
           request:
@@ -8724,7 +8782,8 @@ paths:
         name: Retrieve vector store
         group: vector_stores
         beta: true
-        returns: The [vector store](/docs/api-reference/vector-stores/object) object
+        returns:
+          The [vector store](/docs/api-reference/vector-stores/object) object
           matching the specified ID.
         examples:
           request:
@@ -8788,7 +8847,8 @@ paths:
         name: Modify vector store
         group: vector_stores
         beta: true
-        returns: The modified [vector store](/docs/api-reference/vector-stores/object)
+        returns:
+          The modified [vector store](/docs/api-reference/vector-stores/object)
           object.
         examples:
           request:
@@ -9223,7 +9283,8 @@ paths:
             type: string
         - name: filter
           in: query
-          description: Filter by file status. One of `in_progress`, `completed`, `failed`,
+          description:
+            Filter by file status. One of `in_progress`, `completed`, `failed`,
             `cancelled`.
           schema:
             type: string
@@ -9358,7 +9419,8 @@ paths:
             type: string
         - name: filter
           in: query
-          description: Filter by file status. One of `in_progress`, `completed`, `failed`,
+          description:
+            Filter by file status. One of `in_progress`, `completed`, `failed`,
             `cancelled`.
           schema:
             type: string
@@ -9594,7 +9656,8 @@ paths:
       operationId: deleteVectorStoreFile
       tags:
         - Vector stores
-      summary: Delete a vector store file. This will remove the file from the vector
+      summary:
+        Delete a vector store file. This will remove the file from the vector
         store but the file itself will not be deleted. To delete the file, use
         the [delete file](/docs/api-reference/files/delete) endpoint.
       parameters:
@@ -10030,7 +10093,8 @@ components:
       x-oaiExpandable: true
     AssistantsNamedToolChoice:
       type: object
-      description: Specifies a tool the model should use. Use to force the model to
+      description:
+        Specifies a tool the model should use. Use to force the model to
         call a specific tool.
       properties:
         type:
@@ -10039,7 +10103,8 @@ components:
             - function
             - code_interpreter
             - file_search
-          description: The type of the tool. If type is `function`, the function name must
+          description:
+            The type of the tool. If type is `function`, the function name must
             be set
         function:
           type: object
@@ -10077,7 +10142,8 @@ components:
           description: The Unix timestamp (in seconds) of the event.
         project:
           type: object
-          description: The project that the action was scoped to. Absent for actions not
+          description:
+            The project that the action was scoped to. Absent for actions not
             scoped to projects.
           properties:
             id:
@@ -10145,7 +10211,8 @@ components:
                   description: The email invited to the organization.
                 role:
                   type: string
-                  description: The role the email was invited to be. Is either `owner` or
+                  description:
+                    The role the email was invited to be. Is either `owner` or
                     `member`.
         invite.accepted:
           type: object
@@ -10206,12 +10273,14 @@ components:
                   properties:
                     threads_ui_visibility:
                       type: string
-                      description: Visibility of the threads page which shows messages created with
+                      description:
+                        Visibility of the threads page which shows messages created with
                         the Assistants API and Playground. One of `ANY_ROLE`,
                         `OWNERS`, or `NONE`.
                     usage_dashboard_visibility:
                       type: string
-                      description: Visibility of the usage dashboard which shows activity and costs
+                      description:
+                        Visibility of the usage dashboard which shows activity and costs
                         for your organization. One of `ANY_ROLE` or `OWNERS`.
         project.created:
           type: object
@@ -10485,7 +10554,8 @@ components:
                     nullable: true
                   line:
                     type: integer
-                    description: The line number of the input file where the error occurred, if
+                    description:
+                      The line number of the input file where the error occurred, if
                       applicable.
                     nullable: true
         input_file_id:
@@ -10508,7 +10578,8 @@ components:
             - cancelled
         output_file_id:
           type: string
-          description: The ID of the file containing the outputs of successfully executed
+          description:
+            The ID of the file containing the outputs of successfully executed
             requests.
         error_file_id:
           type: string
@@ -10518,14 +10589,16 @@ components:
           description: The Unix timestamp (in seconds) for when the batch was created.
         in_progress_at:
           type: integer
-          description: The Unix timestamp (in seconds) for when the batch started
+          description:
+            The Unix timestamp (in seconds) for when the batch started
             processing.
         expires_at:
           type: integer
           description: The Unix timestamp (in seconds) for when the batch will expire.
         finalizing_at:
           type: integer
-          description: The Unix timestamp (in seconds) for when the batch started
+          description:
+            The Unix timestamp (in seconds) for when the batch started
             finalizing.
         completed_at:
           type: integer
@@ -10538,7 +10611,8 @@ components:
           description: The Unix timestamp (in seconds) for when the batch expired.
         cancelling_at:
           type: integer
-          description: The Unix timestamp (in seconds) for when the batch started
+          description:
+            The Unix timestamp (in seconds) for when the batch started
             cancelling.
         cancelled_at:
           type: integer
@@ -10615,17 +10689,20 @@ components:
       properties:
         custom_id:
           type: string
-          description: A developer-provided per-request id that will be used to match
+          description:
+            A developer-provided per-request id that will be used to match
             outputs to inputs. Must be unique for each request in a batch.
         method:
           type: string
           enum:
             - POST
-          description: The HTTP method to be used for the request. Currently only `POST`
+          description:
+            The HTTP method to be used for the request. Currently only `POST`
             is supported.
         url:
           type: string
-          description: The OpenAI API relative URL to be used for the request. Currently
+          description:
+            The OpenAI API relative URL to be used for the request. Currently
             `/v1/chat/completions`, `/v1/embeddings`, and `/v1/completions` are
             supported.
       x-oaiMeta:
@@ -10643,7 +10720,8 @@ components:
           type: string
         custom_id:
           type: string
-          description: A developer-provided per-request id that will be used to match
+          description:
+            A developer-provided per-request id that will be used to match
             outputs to inputs.
         response:
           type: object
@@ -10654,7 +10732,8 @@ components:
               description: The HTTP status code of the response
             request_id:
               type: string
-              description: An unique identifier for the OpenAI API request. Please include
+              description:
+                An unique identifier for the OpenAI API request. Please include
                 this request ID when contacting support.
             body:
               type: object
@@ -10663,7 +10742,8 @@ components:
         error:
           type: object
           nullable: true
-          description: For requests that failed with a non-HTTP error, this will contain
+          description:
+            For requests that failed with a non-HTTP error, this will contain
             more information on the cause of the failure.
           properties:
             code:
@@ -10702,11 +10782,13 @@ components:
       properties:
         description:
           type: string
-          description: A description of what the function does, used by the model to
+          description:
+            A description of what the function does, used by the model to
             choose when and how to call the function.
         name:
           type: string
-          description: The name of the function to be called. Must be a-z, A-Z, 0-9, or
+          description:
+            The name of the function to be called. Must be a-z, A-Z, 0-9, or
             contain underscores and dashes, with a maximum length of 64.
         parameters:
           $ref: "#/components/schemas/FunctionParameters"
@@ -10732,7 +10814,8 @@ components:
               description: The name of the function to call.
             arguments:
               type: string
-              description: The arguments to call the function with, as generated by the model
+              description:
+                The arguments to call the function with, as generated by the model
                 in JSON format. Note that the model does not always generate
                 valid JSON, and may hallucinate parameters not defined by your
                 function schema. Validate the arguments in your code before
@@ -10765,7 +10848,8 @@ components:
               description: The name of the function to call.
             arguments:
               type: string
-              description: The arguments to call the function with, as generated by the model
+              description:
+                The arguments to call the function with, as generated by the model
                 in JSON format. Note that the model does not always generate
                 valid JSON, and may hallucinate parameters not defined by your
                 function schema. Validate the arguments in your code before
@@ -10805,7 +10889,8 @@ components:
           - audio
     ChatCompletionNamedToolChoice:
       type: object
-      description: Specifies a tool the model should use. Use to force the model to
+      description:
+        Specifies a tool the model should use. Use to force the model to
         call a specific function.
       properties:
         type:
@@ -10836,7 +10921,8 @@ components:
               description: The contents of the assistant message.
               title: Text content
             - type: array
-              description: An array of content parts with a defined type. Can be one or more
+              description:
+                An array of content parts with a defined type. Can be one or more
                 of type `text`, or exactly one of type `refusal`.
               title: Array of content parts
               items:
@@ -10877,13 +10963,15 @@ components:
         function_call:
           type: object
           deprecated: true
-          description: Deprecated and replaced by `tool_calls`. The name and arguments of
+          description:
+            Deprecated and replaced by `tool_calls`. The name and arguments of
             a function that should be called, as generated by the model.
           nullable: true
           properties:
             arguments:
               type: string
-              description: The arguments to call the function with, as generated by the model
+              description:
+                The arguments to call the function with, as generated by the model
                 in JSON format. Note that the model does not always generate
                 valid JSON, and may hallucinate parameters not defined by your
                 function schema. Validate the arguments in your code before
@@ -10981,7 +11069,8 @@ components:
               format: uri
             detail:
               type: string
-              description: Specifies the detail level of the image. Learn more in the [Vision
+              description:
+                Specifies the detail level of the image. Learn more in the [Vision
                 guide](/docs/guides/vision/low-or-high-fidelity-image-understanding).
               enum:
                 - auto
@@ -11036,7 +11125,8 @@ components:
               description: The contents of the system message.
               title: Text content
             - type: array
-              description: An array of content parts with a defined type. For system messages,
+              description:
+                An array of content parts with a defined type. For system messages,
                 only type `text` is supported.
               title: Array of content parts
               items:
@@ -11073,7 +11163,8 @@ components:
               description: The contents of the tool message.
               title: Text content
             - type: array
-              description: An array of content parts with a defined type. For tool messages,
+              description:
+                An array of content parts with a defined type. For tool messages,
                 only type `text` is supported.
               title: Array of content parts
               items:
@@ -11103,7 +11194,8 @@ components:
               description: The text contents of the message.
               title: Text content
             - type: array
-              description: An array of content parts with a defined type. Supported options
+              description:
+                An array of content parts with a defined type. Supported options
                 differ based on the [model](/docs/models) being used to generate
                 the response. Can contain text, image, or audio inputs.
               title: Array of content parts
@@ -11151,12 +11243,14 @@ components:
         function_call:
           type: object
           deprecated: true
-          description: Deprecated and replaced by `tool_calls`. The name and arguments of
+          description:
+            Deprecated and replaced by `tool_calls`. The name and arguments of
             a function that should be called, as generated by the model.
           properties:
             arguments:
               type: string
-              description: The arguments to call the function with, as generated by the model
+              description:
+                The arguments to call the function with, as generated by the model
                 in JSON format. Note that the model does not always generate
                 valid JSON, and may hallucinate parameters not defined by your
                 function schema. Validate the arguments in your code before
@@ -11242,12 +11336,14 @@ components:
         function_call:
           deprecated: true
           type: object
-          description: Deprecated and replaced by `tool_calls`. The name and arguments of
+          description:
+            Deprecated and replaced by `tool_calls`. The name and arguments of
             a function that should be called, as generated by the model.
           properties:
             arguments:
               type: string
-              description: The arguments to call the function with, as generated by the model
+              description:
+                The arguments to call the function with, as generated by the model
                 in JSON format. Note that the model does not always generate
                 valid JSON, and may hallucinate parameters not defined by your
                 function schema. Validate the arguments in your code before
@@ -11278,12 +11374,14 @@ components:
           description: The token.
           type: string
         logprob: &a2
-          description: The log probability of this token, if it is within the top 20 most
+          description:
+            The log probability of this token, if it is within the top 20 most
             likely tokens. Otherwise, the value `-9999.0` is used to signify
             that the token is very unlikely.
           type: number
         bytes: &a3
-          description: A list of integers representing the UTF-8 bytes representation of
+          description:
+            A list of integers representing the UTF-8 bytes representation of
             the token. Useful in instances where characters are represented by
             multiple tokens and their byte representations must be combined to
             generate the correct text representation. Can be `null` if there is
@@ -11293,7 +11391,8 @@ components:
             type: integer
           nullable: true
         top_logprobs:
-          description: List of the most likely tokens and their log probability, at this
+          description:
+            List of the most likely tokens and their log probability, at this
             token position. In rare cases, there may be fewer than the number of
             requested `top_logprobs` returned.
           type: array
@@ -11358,7 +11457,8 @@ components:
       x-oaiExpandable: true
     ChunkingStrategyRequestParam:
       type: object
-      description: The chunking strategy used to chunk the file(s). If not set, will
+      description:
+        The chunking strategy used to chunk the file(s). If not set, will
         use the `auto` strategy.
       oneOf:
         - $ref: "#/components/schemas/AutoChunkingStrategyRequestParam"
@@ -11436,7 +11536,6 @@ components:
                 - gpt-4o
                 - gpt-4o-2024-08-06
                 - gpt-4o-2024-05-13
-                - gpt-4o-2024-08-06
                 - gpt-4o-mini
                 - gpt-4o-mini-2024-07-18
                 - gpt-4-turbo
@@ -11547,12 +11646,14 @@ components:
                           type: string
                       chunking_strategy:
                         type: object
-                        description: The chunking strategy used to chunk the file(s). If not set, will
+                        description:
+                          The chunking strategy used to chunk the file(s). If not set, will
                           use the `auto` strategy.
                         oneOf:
                           - type: object
                             title: Auto Chunking Strategy
-                            description: The default strategy. This strategy currently uses a
+                            description:
+                              The default strategy. This strategy currently uses a
                               `max_chunk_size_tokens` of `800` and
                               `chunk_overlap_tokens` of `400`.
                             additionalProperties: false
@@ -11581,7 +11682,8 @@ components:
                                     type: integer
                                     minimum: 100
                                     maximum: 4096
-                                    description: The maximum number of tokens in each chunk. The default value is
+                                    description:
+                                      The maximum number of tokens in each chunk. The default value is
                                       `800`. The minimum value is `100` and the
                                       maximum value is `4096`.
                                   chunk_overlap_tokens:
@@ -11658,7 +11760,8 @@ components:
         - model
     CreateChatCompletionFunctionResponse:
       type: object
-      description: Represents a chat completion response returned by model, based on
+      description:
+        Represents a chat completion response returned by model, based on
         the provided input.
       properties:
         id:
@@ -11666,7 +11769,8 @@ components:
           description: A unique identifier for the chat completion.
         choices:
           type: array
-          description: A list of chat completion choices. Can be more than one if `n` is
+          description:
+            A list of chat completion choices. Can be more than one if `n` is
             greater than 1.
           items:
             type: object
@@ -11697,7 +11801,8 @@ components:
                 $ref: "#/components/schemas/ChatCompletionResponseMessage"
         created:
           type: integer
-          description: The Unix timestamp (in seconds) of when the chat completion was
+          description:
+            The Unix timestamp (in seconds) of when the chat completion was
             created.
         model:
           type: string
@@ -11766,7 +11871,8 @@ components:
           }
     CreateChatCompletionImageResponse:
       type: object
-      description: Represents a streamed chunk of a chat completion response returned
+      description:
+        Represents a streamed chunk of a chat completion response returned
         by model, based on the provided input.
       x-oaiMeta:
         name: The chat completion chunk object
@@ -11830,7 +11936,6 @@ components:
                 - gpt-4o
                 - gpt-4o-2024-08-06
                 - gpt-4o-2024-05-13
-                - gpt-4o-2024-08-06
                 - gpt-4o-realtime-preview
                 - gpt-4o-realtime-preview-2024-10-01
                 - gpt-4o-audio-preview
@@ -11909,14 +12014,16 @@ components:
             selection; values like -100 or 100 should result in a ban or
             exclusive selection of the relevant token.
         logprobs:
-          description: Whether to return log probabilities of the output tokens or not. If
+          description:
+            Whether to return log probabilities of the output tokens or not. If
             true, returns the log probabilities of each output token returned in
             the `content` of `message`.
           type: boolean
           default: false
           nullable: true
         top_logprobs:
-          description: An integer between 0 and 20 specifying the number of most likely
+          description:
+            An integer between 0 and 20 specifying the number of most likely
             tokens to return at each token position, each with an associated log
             probability. `logprobs` must be set to `true` if this parameter is
             used.
@@ -11951,7 +12058,8 @@ components:
           default: 1
           example: 1
           nullable: true
-          description: How many chat completion choices to generate for each input
+          description:
+            How many chat completion choices to generate for each input
             message. Note that you will be charged based on the number of
             generated tokens across all of the choices. Keep `n` as `1` to
             minimize costs.
@@ -12196,7 +12304,8 @@ components:
         - messages
     CreateChatCompletionResponse:
       type: object
-      description: Represents a chat completion response returned by model, based on
+      description:
+        Represents a chat completion response returned by model, based on
         the provided input.
       properties:
         id:
@@ -12204,7 +12313,8 @@ components:
           description: A unique identifier for the chat completion.
         choices:
           type: array
-          description: A list of chat completion choices. Can be more than one if `n` is
+          description:
+            A list of chat completion choices. Can be more than one if `n` is
             greater than 1.
           items:
             type: object
@@ -12262,13 +12372,15 @@ components:
                   - refusal
         created:
           type: integer
-          description: The Unix timestamp (in seconds) of when the chat completion was
+          description:
+            The Unix timestamp (in seconds) of when the chat completion was
             created.
         model:
           type: string
           description: The model used for the chat completion.
         service_tier:
-          description: The service tier used for processing the request. This field is
+          description:
+            The service tier used for processing the request. This field is
             only included if the `service_tier` parameter is specified in the
             request.
           type: string
@@ -12336,12 +12448,14 @@ components:
           }
     CreateChatCompletionStreamResponse:
       type: object
-      description: Represents a streamed chunk of a chat completion response returned
+      description:
+        Represents a streamed chunk of a chat completion response returned
         by model, based on the provided input.
       properties:
         id:
           type: string
-          description: A unique identifier for the chat completion. Each chunk has the
+          description:
+            A unique identifier for the chat completion. Each chunk has the
             same ID.
         choices:
           type: array
@@ -12406,13 +12520,15 @@ components:
                 description: The index of the choice in the list of choices.
         created:
           type: integer
-          description: The Unix timestamp (in seconds) of when the chat completion was
+          description:
+            The Unix timestamp (in seconds) of when the chat completion was
             created. Each chunk has the same timestamp.
         model:
           type: string
           description: The model to generate the completion.
         service_tier:
-          description: The service tier used for processing the request. This field is
+          description:
+            The service tier used for processing the request. This field is
             only included if the `service_tier` parameter is specified in the
             request.
           type: string
@@ -12759,7 +12875,8 @@ components:
           description: A unique identifier for the completion.
         choices:
           type: array
-          description: The list of completion choices the model generated for the input
+          description:
+            The list of completion choices the model generated for the input
             prompt.
           items:
             type: object
@@ -12903,7 +13020,8 @@ components:
               example: "[1212, 318, 257, 1332, 13]"
             - type: array
               title: array
-              description: The array of arrays containing integers that will be turned into an
+              description:
+                The array of arrays containing integers that will be turned into an
                 embedding.
               minItems: 1
               maxItems: 2048
@@ -12930,7 +13048,8 @@ components:
                 - text-embedding-3-large
           x-oaiTypeLabel: string
         encoding_format:
-          description: The format to return the embeddings in. Can be either `float` or
+          description:
+            The format to return the embeddings in. Can be either `float` or
             [`base64`](https://pypi.org/project/pybase64/).
           example: float
           default: float
@@ -13225,18 +13344,21 @@ components:
       type: object
       properties:
         image:
-          description: The image to edit. Must be a valid PNG file, less than 4MB, and
+          description:
+            The image to edit. Must be a valid PNG file, less than 4MB, and
             square. If mask is not provided, image must have transparency, which
             will be used as the mask.
           type: string
           format: binary
         prompt:
-          description: A text description of the desired image(s). The maximum length is
+          description:
+            A text description of the desired image(s). The maximum length is
             1000 characters.
           type: string
           example: A cute baby sea otter wearing a beret
         mask:
-          description: An additional image whose fully transparent areas (e.g. where alpha
+          description:
+            An additional image whose fully transparent areas (e.g. where alpha
             is zero) indicate where `image` should be edited. Must be a valid
             PNG file, less than 4MB, and have the same dimensions as `image`.
           type: string
@@ -13251,7 +13373,8 @@ components:
           default: dall-e-2
           example: dall-e-2
           nullable: true
-          description: The model to use for image generation. Only `dall-e-2` is supported
+          description:
+            The model to use for image generation. Only `dall-e-2` is supported
             at this time.
         n:
           type: integer
@@ -13270,7 +13393,8 @@ components:
           default: 1024x1024
           example: 1024x1024
           nullable: true
-          description: The size of the generated images. Must be one of `256x256`,
+          description:
+            The size of the generated images. Must be one of `256x256`,
             `512x512`, or `1024x1024`.
         response_format:
           type: string
@@ -13280,7 +13404,8 @@ components:
           default: url
           example: url
           nullable: true
-          description: The format in which the generated images are returned. Must be one
+          description:
+            The format in which the generated images are returned. Must be one
             of `url` or `b64_json`. URLs are only valid for 60 minutes after the
             image has been generated.
         user:
@@ -13297,7 +13422,8 @@ components:
       type: object
       properties:
         prompt:
-          description: A text description of the desired image(s). The maximum length is
+          description:
+            A text description of the desired image(s). The maximum length is
             1000 characters for `dall-e-2` and 4000 characters for `dall-e-3`.
           type: string
           example: A cute baby sea otter
@@ -13320,7 +13446,8 @@ components:
           default: 1
           example: 1
           nullable: true
-          description: The number of images to generate. Must be between 1 and 10. For
+          description:
+            The number of images to generate. Must be between 1 and 10. For
             `dall-e-3`, only `n=1` is supported.
         quality:
           type: string
@@ -13329,7 +13456,8 @@ components:
             - hd
           default: standard
           example: standard
-          description: The quality of the image that will be generated. `hd` creates
+          description:
+            The quality of the image that will be generated. `hd` creates
             images with finer details and greater consistency across the image.
             This param is only supported for `dall-e-3`.
         response_format:
@@ -13340,7 +13468,8 @@ components:
           default: url
           example: url
           nullable: true
-          description: The format in which the generated images are returned. Must be one
+          description:
+            The format in which the generated images are returned. Must be one
             of `url` or `b64_json`. URLs are only valid for 60 minutes after the
             image has been generated.
         size:
@@ -13354,7 +13483,8 @@ components:
           default: 1024x1024
           example: 1024x1024
           nullable: true
-          description: The size of the generated images. Must be one of `256x256`,
+          description:
+            The size of the generated images. Must be one of `256x256`,
             `512x512`, or `1024x1024` for `dall-e-2`. Must be one of
             `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models.
         style:
@@ -13365,7 +13495,8 @@ components:
           default: vivid
           example: vivid
           nullable: true
-          description: The style of the generated images. Must be one of `vivid` or
+          description:
+            The style of the generated images. Must be one of `vivid` or
             `natural`. Vivid causes the model to lean towards generating
             hyper-real and dramatic images. Natural causes the model to produce
             more natural, less hyper-real looking images. This param is only
@@ -13383,7 +13514,8 @@ components:
       type: object
       properties:
         image:
-          description: The image to use as the basis for the variation(s). Must be a valid
+          description:
+            The image to use as the basis for the variation(s). Must be a valid
             PNG file, less than 4MB, and square.
           type: string
           format: binary
@@ -13397,7 +13529,8 @@ components:
           default: dall-e-2
           example: dall-e-2
           nullable: true
-          description: The model to use for image generation. Only `dall-e-2` is supported
+          description:
+            The model to use for image generation. Only `dall-e-2` is supported
             at this time.
         n:
           type: integer
@@ -13406,7 +13539,8 @@ components:
           default: 1
           example: 1
           nullable: true
-          description: The number of images to generate. Must be between 1 and 10. For
+          description:
+            The number of images to generate. Must be between 1 and 10. For
             `dall-e-3`, only `n=1` is supported.
         response_format:
           type: string
@@ -13416,7 +13550,8 @@ components:
           default: url
           example: url
           nullable: true
-          description: The format in which the generated images are returned. Must be one
+          description:
+            The format in which the generated images are returned. Must be one
             of `url` or `b64_json`. URLs are only valid for 60 minutes after the
             image has been generated.
         size:
@@ -13428,7 +13563,8 @@ components:
           default: 1024x1024
           example: 1024x1024
           nullable: true
-          description: The size of the generated images. Must be one of `256x256`,
+          description:
+            The size of the generated images. Must be one of `256x256`,
             `512x512`, or `1024x1024`.
         user:
           type: string
@@ -13467,7 +13603,8 @@ components:
               description: The text contents of the message.
               title: Text content
             - type: array
-              description: An array of content parts with a defined type, each can be of type
+              description:
+                An array of content parts with a defined type, each can be of type
                 `text` or images can be passed with `image_url` or `image_file`.
                 Image types are only supported on [Vision-compatible
                 models](/docs/models/overview).
@@ -13496,7 +13633,8 @@ components:
                     - $ref: "#/components/schemas/AssistantToolsCode"
                     - $ref: "#/components/schemas/AssistantToolsFileSearchTypeOnly"
                   x-oaiExpandable: true
-          description: A list of files attached to the message, and the tools they should
+          description:
+            A list of files attached to the message, and the tools they should
             be added to.
           required:
             - file_id
@@ -13546,7 +13684,8 @@ components:
                           - image_url
                       image_url:
                         type: object
-                        description: Contains either an image URL or a data URL for a base64 encoded
+                        description:
+                          Contains either an image URL or a data URL for a base64 encoded
                           image.
                         properties:
                           url:
@@ -13619,66 +13758,78 @@ components:
                 properties:
                   hate:
                     type: boolean
-                    description: Content that expresses, incites, or promotes hate based on race,
+                    description:
+                      Content that expresses, incites, or promotes hate based on race,
                       gender, ethnicity, religion, nationality, sexual
                       orientation, disability status, or caste. Hateful content
                       aimed at non-protected groups (e.g., chess players) is
                       harassment.
                   hate/threatening:
                     type: boolean
-                    description: Hateful content that also includes violence or serious harm towards
+                    description:
+                      Hateful content that also includes violence or serious harm towards
                       the targeted group based on race, gender, ethnicity,
                       religion, nationality, sexual orientation, disability
                       status, or caste.
                   harassment:
                     type: boolean
-                    description: Content that expresses, incites, or promotes harassing language
+                    description:
+                      Content that expresses, incites, or promotes harassing language
                       towards any target.
                   harassment/threatening:
                     type: boolean
-                    description: Harassment content that also includes violence or serious harm
+                    description:
+                      Harassment content that also includes violence or serious harm
                       towards any target.
                   illicit:
                     type: boolean
-                    description: Content that includes instructions or advice that facilitate the
+                    description:
+                      Content that includes instructions or advice that facilitate the
                       planning or execution of wrongdoing, or that gives advice
                       or instruction on how to commit illicit acts. For example,
                       "how to shoplift" would fit this category.
                   illicit/violent:
                     type: boolean
-                    description: Content that includes instructions or advice that facilitate the
+                    description:
+                      Content that includes instructions or advice that facilitate the
                       planning or execution of wrongdoing that also includes
                       violence, or that gives advice or instruction on the
                       procurement of any weapon.
                   self-harm:
                     type: boolean
-                    description: Content that promotes, encourages, or depicts acts of self-harm,
+                    description:
+                      Content that promotes, encourages, or depicts acts of self-harm,
                       such as suicide, cutting, and eating disorders.
                   self-harm/intent:
                     type: boolean
-                    description: Content where the speaker expresses that they are engaging or
+                    description:
+                      Content where the speaker expresses that they are engaging or
                       intend to engage in acts of self-harm, such as suicide,
                       cutting, and eating disorders.
                   self-harm/instructions:
                     type: boolean
-                    description: Content that encourages performing acts of self-harm, such as
+                    description:
+                      Content that encourages performing acts of self-harm, such as
                       suicide, cutting, and eating disorders, or that gives
                       instructions or advice on how to commit such acts.
                   sexual:
                     type: boolean
-                    description: Content meant to arouse sexual excitement, such as the description
+                    description:
+                      Content meant to arouse sexual excitement, such as the description
                       of sexual activity, or that promotes sexual services
                       (excluding sex education and wellness).
                   sexual/minors:
                     type: boolean
-                    description: Sexual content that includes an individual who is under 18 years
+                    description:
+                      Sexual content that includes an individual who is under 18 years
                       old.
                   violence:
                     type: boolean
                     description: Content that depicts death, violence, or physical injury.
                   violence/graphic:
                     type: boolean
-                    description: Content that depicts death, violence, or physical injury in graphic
+                    description:
+                      Content that depicts death, violence, or physical injury in graphic
                       detail.
                 required:
                   - hate
@@ -13696,7 +13847,8 @@ components:
                   - violence/graphic
               category_scores:
                 type: object
-                description: A list of the categories along with their scores as predicted by
+                description:
+                  A list of the categories along with their scores as predicted by
                   model.
                 properties:
                   hate:
@@ -13754,7 +13906,8 @@ components:
                   - violence/graphic
               category_applied_input_types:
                 type: object
-                description: A list of the categories along with the input type(s) that the
+                description:
+                  A list of the categories along with the input type(s) that the
                   score applies to.
                 properties:
                   hate:
@@ -13973,11 +14126,13 @@ components:
       additionalProperties: false
       properties:
         assistant_id:
-          description: The ID of the [assistant](/docs/api-reference/assistants) to use to
+          description:
+            The ID of the [assistant](/docs/api-reference/assistants) to use to
             execute this run.
           type: string
         model:
-          description: The ID of the [Model](/docs/api-reference/models) to be used to
+          description:
+            The ID of the [Model](/docs/api-reference/models) to be used to
             execute this run. If a value is provided here, it will override the
             model associated with the assistant. If not, the model associated
             with the assistant will be used.
@@ -13989,7 +14144,6 @@ components:
                 - gpt-4o
                 - gpt-4o-2024-08-06
                 - gpt-4o-2024-05-13
-                - gpt-4o-2024-08-06
                 - gpt-4o-mini
                 - gpt-4o-mini-2024-07-18
                 - gpt-4-turbo
@@ -14020,7 +14174,8 @@ components:
           type: string
           nullable: true
         additional_instructions:
-          description: Appends additional instructions at the end of the instructions for
+          description:
+            Appends additional instructions at the end of the instructions for
             the run. This is useful for modifying the behavior on a per-run
             basis without overriding other instructions.
           type: string
@@ -14032,7 +14187,8 @@ components:
             $ref: "#/components/schemas/CreateMessageRequest"
           nullable: true
         tools:
-          description: Override the tools the assistant can use for this run. This is
+          description:
+            Override the tools the assistant can use for this run. This is
             useful for modifying the behavior on a per-run basis.
           nullable: true
           type: array
@@ -14136,11 +14292,13 @@ components:
           x-oaiTypeLabel: string
         input:
           type: string
-          description: The text to generate audio for. The maximum length is 4096
+          description:
+            The text to generate audio for. The maximum length is 4096
             characters.
           maxLength: 4096
         voice:
-          description: The voice to use when generating the audio. Supported voices are
+          description:
+            The voice to use when generating the audio. Supported voices are
             `alloy`, `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of
             the voices are available in the [Text to speech
             guide](/docs/guides/text-to-speech/voice-options).
@@ -14153,7 +14311,8 @@ components:
             - nova
             - shimmer
         response_format:
-          description: The format to audio in. Supported formats are `mp3`, `opus`, `aac`,
+          description:
+            The format to audio in. Supported formats are `mp3`, `opus`, `aac`,
             `flac`, `wav`, and `pcm`.
           default: mp3
           type: string
@@ -14165,7 +14324,8 @@ components:
             - wav
             - pcm
         speed:
-          description: The speed of the generated audio. Select a value from `0.25` to
+          description:
+            The speed of the generated audio. Select a value from `0.25` to
             `4.0`. `1.0` is the default.
           type: number
           default: 1
@@ -14180,14 +14340,16 @@ components:
       additionalProperties: false
       properties:
         assistant_id:
-          description: The ID of the [assistant](/docs/api-reference/assistants) to use to
+          description:
+            The ID of the [assistant](/docs/api-reference/assistants) to use to
             execute this run.
           type: string
         thread:
           $ref: "#/components/schemas/CreateThreadRequest"
           description: If no thread is provided, an empty thread will be created.
         model:
-          description: The ID of the [Model](/docs/api-reference/models) to be used to
+          description:
+            The ID of the [Model](/docs/api-reference/models) to be used to
             execute this run. If a value is provided here, it will override the
             model associated with the assistant. If not, the model associated
             with the assistant will be used.
@@ -14199,7 +14361,6 @@ components:
                 - gpt-4o
                 - gpt-4o-2024-08-06
                 - gpt-4o-2024-05-13
-                - gpt-4o-2024-08-06
                 - gpt-4o-mini
                 - gpt-4o-mini-2024-07-18
                 - gpt-4-turbo
@@ -14223,12 +14384,14 @@ components:
           x-oaiTypeLabel: string
           nullable: true
         instructions:
-          description: Override the default system message of the assistant. This is
+          description:
+            Override the default system message of the assistant. This is
             useful for modifying the behavior on a per-run basis.
           type: string
           nullable: true
         tools:
-          description: Override the tools the assistant can use for this run. This is
+          description:
+            Override the tools the assistant can use for this run. This is
             useful for modifying the behavior on a per-run basis.
           nullable: true
           type: array
@@ -14354,7 +14517,8 @@ components:
       additionalProperties: false
       properties:
         messages:
-          description: A list of [messages](/docs/api-reference/messages) to start the
+          description:
+            A list of [messages](/docs/api-reference/messages) to start the
             thread with.
           type: array
           items:
@@ -14414,12 +14578,14 @@ components:
                           type: string
                       chunking_strategy:
                         type: object
-                        description: The chunking strategy used to chunk the file(s). If not set, will
+                        description:
+                          The chunking strategy used to chunk the file(s). If not set, will
                           use the `auto` strategy.
                         oneOf:
                           - type: object
                             title: Auto Chunking Strategy
-                            description: The default strategy. This strategy currently uses a
+                            description:
+                              The default strategy. This strategy currently uses a
                               `max_chunk_size_tokens` of `800` and
                               `chunk_overlap_tokens` of `400`.
                             additionalProperties: false
@@ -14448,7 +14614,8 @@ components:
                                     type: integer
                                     minimum: 100
                                     maximum: 4096
-                                    description: The maximum number of tokens in each chunk. The default value is
+                                    description:
+                                      The maximum number of tokens in each chunk. The default value is
                                       `800`. The minimum value is `100` and the
                                       maximum value is `4096`.
                                   chunk_overlap_tokens:
@@ -14560,7 +14727,8 @@ components:
         - model
     CreateTranscriptionResponseJson:
       type: object
-      description: Represents a transcription response returned by model, based on the
+      description:
+        Represents a transcription response returned by model, based on the
         provided input.
       properties:
         text:
@@ -14577,7 +14745,8 @@ components:
           }
     CreateTranscriptionResponseVerboseJson:
       type: object
-      description: Represents a verbose json transcription response returned by model,
+      description:
+        Represents a verbose json transcription response returned by model,
         based on the provided input.
       properties:
         language:
@@ -14744,7 +14913,8 @@ components:
       additionalProperties: false
       properties:
         file_ids:
-          description: A list of [File](/docs/api-reference/files) IDs that the vector
+          description:
+            A list of [File](/docs/api-reference/files) IDs that the vector
             store should use. Useful for tools like `file_search` that can
             access files.
           type: array
@@ -14761,7 +14931,8 @@ components:
       additionalProperties: false
       properties:
         file_id:
-          description: A [File](/docs/api-reference/files) ID that the vector store should
+          description:
+            A [File](/docs/api-reference/files) ID that the vector store should
             use. Useful for tools like `file_search` that can access files.
           type: string
         chunking_strategy:
@@ -14773,7 +14944,8 @@ components:
       additionalProperties: false
       properties:
         file_ids:
-          description: A list of [File](/docs/api-reference/files) IDs that the vector
+          description:
+            A list of [File](/docs/api-reference/files) IDs that the vector
             store should use. Useful for tools like `file_search` that can
             access files.
           type: array
@@ -14787,7 +14959,8 @@ components:
           $ref: "#/components/schemas/VectorStoreExpirationAfter"
         chunking_strategy:
           type: object
-          description: The chunking strategy used to chunk the file(s). If not set, will
+          description:
+            The chunking strategy used to chunk the file(s). If not set, will
             use the `auto` strategy. Only applicable if `file_ids` is non-empty.
           oneOf:
             - $ref: "#/components/schemas/AutoChunkingStrategyRequestParam"
@@ -15002,7 +15175,8 @@ components:
       required:
         - event
         - data
-      description: Occurs when an [error](/docs/guides/error-codes/api-errors) occurs.
+      description:
+        Occurs when an [error](/docs/guides/error-codes/api-errors) occurs.
         This can happen due to an internal server error or a timeout.
       x-oaiMeta:
         dataDescription: "`data` is an [error](/docs/guides/error-codes/api-errors)"
@@ -15027,14 +15201,16 @@ components:
       properties:
         ranker:
           type: string
-          description: The ranker to use for the file search. If not specified will use
+          description:
+            The ranker to use for the file search. If not specified will use
             the `auto` ranker.
           enum:
             - auto
             - default_2024_08_21
         score_threshold:
           type: number
-          description: The score threshold for the file search. All values must be a
+          description:
+            The score threshold for the file search. All values must be a
             floating point number between 0 and 1.
           minimum: 0
           maximum: 1
@@ -15124,12 +15300,14 @@ components:
           description: The object identifier, which can be referenced in the API endpoints.
         created_at:
           type: integer
-          description: The Unix timestamp (in seconds) for when the fine-tuning job was
+          description:
+            The Unix timestamp (in seconds) for when the fine-tuning job was
             created.
         error:
           type: object
           nullable: true
-          description: For fine-tuning jobs that have `failed`, this will contain more
+          description:
+            For fine-tuning jobs that have `failed`, this will contain more
             information on the cause of the failure.
           properties:
             code:
@@ -15140,7 +15318,8 @@ components:
               description: A human-readable error message.
             param:
               type: string
-              description: The parameter that was invalid, usually `training_file` or
+              description:
+                The parameter that was invalid, usually `training_file` or
                 `validation_file`. This field will be null if the failure was
                 not parameter-specific.
               nullable: true
@@ -15151,12 +15330,14 @@ components:
         fine_tuned_model:
           type: string
           nullable: true
-          description: The name of the fine-tuned model that is being created. The value
+          description:
+            The name of the fine-tuned model that is being created. The value
             will be null if the fine-tuning job is still running.
         finished_at:
           type: integer
           nullable: true
-          description: The Unix timestamp (in seconds) for when the fine-tuning job was
+          description:
+            The Unix timestamp (in seconds) for when the fine-tuning job was
             finished. The value will be null if the fine-tuning job is still
             running.
         hyperparameters:
@@ -15195,7 +15376,8 @@ components:
           description: The organization that owns the fine-tuning job.
         result_files:
           type: array
-          description: The compiled results file ID(s) for the fine-tuning job. You can
+          description:
+            The compiled results file ID(s) for the fine-tuning job. You can
             retrieve the results with the [Files
             API](/docs/api-reference/files/retrieve-contents).
           items:
@@ -15203,7 +15385,8 @@ components:
             example: file-abc123
         status:
           type: string
-          description: The current status of the fine-tuning job, which can be either
+          description:
+            The current status of the fine-tuning job, which can be either
             `validating_files`, `queued`, `running`, `succeeded`, `failed`, or
             `cancelled`.
           enum:
@@ -15216,16 +15399,19 @@ components:
         trained_tokens:
           type: integer
           nullable: true
-          description: The total number of billable tokens processed by this fine-tuning
+          description:
+            The total number of billable tokens processed by this fine-tuning
             job. The value will be null if the fine-tuning job is still running.
         training_file:
           type: string
-          description: The file ID used for training. You can retrieve the training data
+          description:
+            The file ID used for training. You can retrieve the training data
             with the [Files API](/docs/api-reference/files/retrieve-contents).
         validation_file:
           type: string
           nullable: true
-          description: The file ID used for validation. You can retrieve the validation
+          description:
+            The file ID used for validation. You can retrieve the validation
             results with the [Files
             API](/docs/api-reference/files/retrieve-contents).
         integrations:
@@ -15243,7 +15429,8 @@ components:
         estimated_finish:
           type: integer
           nullable: true
-          description: The Unix timestamp (in seconds) for when the fine-tuning job is
+          description:
+            The Unix timestamp (in seconds) for when the fine-tuning job is
             estimated to finish. The value will be null if the fine-tuning job
             is not running.
       required:
@@ -15298,7 +15485,8 @@ components:
       properties:
         id:
           type: string
-          description: The checkpoint identifier, which can be referenced in the API
+          description:
+            The checkpoint identifier, which can be referenced in the API
             endpoints.
         created_at:
           type: integer
@@ -15329,7 +15517,8 @@ components:
               type: number
         fine_tuning_job_id:
           type: string
-          description: The name of the fine-tuning job that this checkpoint was created
+          description:
+            The name of the fine-tuning job that this checkpoint was created
             from.
         object:
           type: string
@@ -15495,11 +15684,13 @@ components:
       properties:
         description:
           type: string
-          description: A description of what the function does, used by the model to
+          description:
+            A description of what the function does, used by the model to
             choose when and how to call the function.
         name:
           type: string
-          description: The name of the function to be called. Must be a-z, A-Z, 0-9, or
+          description:
+            The name of the function to be called. Must be a-z, A-Z, 0-9, or
             contain underscores and dashes, with a maximum length of 64.
         parameters:
           $ref: "#/components/schemas/FunctionParameters"
@@ -15507,7 +15698,8 @@ components:
           type: boolean
           nullable: true
           default: false
-          description: Whether to enable strict schema adherence when generating the
+          description:
+            Whether to enable strict schema adherence when generating the
             function call. If set to true, the model will follow the exact
             schema defined in the `parameters` field. Only a subset of JSON
             Schema is supported when `strict` is `true`. Learn more about
@@ -15529,7 +15721,8 @@ components:
       additionalProperties: true
     Image:
       type: object
-      description: Represents the url or the content of an image generated by the
+      description:
+        Represents the url or the content of an image generated by the
         OpenAI API.
       properties:
         b64_json:
@@ -15538,11 +15731,13 @@ components:
             `response_format` is `b64_json`.
         url:
           type: string
-          description: The URL of the generated image, if `response_format` is `url`
+          description:
+            The URL of the generated image, if `response_format` is `url`
             (default).
         revised_prompt:
           type: string
-          description: The prompt that was used to generate the image, if there was any
+          description:
+            The prompt that was used to generate the image, if there was any
             revision to the prompt.
       x-oaiMeta:
         name: The image object
@@ -15656,7 +15851,8 @@ components:
           description: The last `invite_id` in the retrieved `list`
         has_more:
           type: boolean
-          description: The `has_more` property is used for pagination to indicate there
+          description:
+            The `has_more` property is used for pagination to indicate there
             are additional results.
       required:
         - object
@@ -16048,13 +16244,15 @@ components:
           type: object
           properties:
             file_id:
-              description: The [File](/docs/api-reference/files) ID of the image in the
+              description:
+                The [File](/docs/api-reference/files) ID of the image in the
                 message content. Set `purpose="vision"` when uploading the File
                 if you need to later display the file content.
               type: string
             detail:
               type: string
-              description: Specifies the detail level of the image if specified by the user.
+              description:
+                Specifies the detail level of the image if specified by the user.
                 `low` uses fewer tokens, you can opt in to high resolution using
                 `high`.
               enum:
@@ -16082,12 +16280,14 @@ components:
           properties:
             url:
               type: string
-              description: "The external URL of the image, must be a supported image types:
+              description:
+                "The external URL of the image, must be a supported image types:
                 jpeg, jpg, png, gif, webp."
               format: uri
             detail:
               type: string
-              description: Specifies the detail level of the image. `low` uses fewer tokens,
+              description:
+                Specifies the detail level of the image. `low` uses fewer tokens,
                 you can opt in to high resolution using `high`. Default value is
                 `auto`
               enum:
@@ -16119,7 +16319,8 @@ components:
     MessageContentTextAnnotationsFileCitationObject:
       title: File citation
       type: object
-      description: A citation within the message that points to a specific quote from
+      description:
+        A citation within the message that points to a specific quote from
         a specific File associated with the assistant or the message. Generated
         when the assistant uses the "file_search" tool to search files.
       properties:
@@ -16154,7 +16355,8 @@ components:
     MessageContentTextAnnotationsFilePathObject:
       title: File path
       type: object
-      description: A URL for the file that's generated when the assistant used the
+      description:
+        A URL for the file that's generated when the assistant used the
         `code_interpreter` tool to generate a file.
       properties:
         type:
@@ -16232,13 +16434,15 @@ components:
           type: object
           properties:
             file_id:
-              description: The [File](/docs/api-reference/files) ID of the image in the
+              description:
+                The [File](/docs/api-reference/files) ID of the image in the
                 message content. Set `purpose="vision"` when uploading the File
                 if you need to later display the file content.
               type: string
             detail:
               type: string
-              description: Specifies the detail level of the image if specified by the user.
+              description:
+                Specifies the detail level of the image if specified by the user.
                 `low` uses fewer tokens, you can opt in to high resolution using
                 `high`.
               enum:
@@ -16266,12 +16470,14 @@ components:
           type: object
           properties:
             url:
-              description: "The URL of the image, must be a supported image types: jpeg, jpg,
+              description:
+                "The URL of the image, must be a supported image types: jpeg, jpg,
                 png, gif, webp."
               type: string
             detail:
               type: string
-              description: Specifies the detail level of the image. `low` uses fewer tokens,
+              description:
+                Specifies the detail level of the image. `low` uses fewer tokens,
                 you can opt in to high resolution using `high`.
               enum:
                 - auto
@@ -16302,7 +16508,8 @@ components:
     MessageDeltaContentTextAnnotationsFileCitationObject:
       title: File citation
       type: object
-      description: A citation within the message that points to a specific quote from
+      description:
+        A citation within the message that points to a specific quote from
         a specific File associated with the assistant or the message. Generated
         when the assistant uses the "file_search" tool to search files.
       properties:
@@ -16338,7 +16545,8 @@ components:
     MessageDeltaContentTextAnnotationsFilePathObject:
       title: File path
       type: object
-      description: A URL for the file that's generated when the assistant used the
+      description:
+        A URL for the file that's generated when the assistant used the
         `code_interpreter` tool to generate a file.
       properties:
         index:
@@ -16390,7 +16598,8 @@ components:
               type: array
               items:
                 oneOf:
-                  - $ref: "#/components/schemas/MessageDeltaContentTextAnnotationsFileCitationObjec\
+                  - $ref:
+                      "#/components/schemas/MessageDeltaContentTextAnnotationsFileCitationObjec\
                       t"
                   - $ref: "#/components/schemas/MessageDeltaContentTextAnnotationsFilePathObject"
                 x-oaiExpandable: true
@@ -16405,7 +16614,8 @@ components:
         streaming.
       properties:
         id:
-          description: The identifier of the message, which can be referenced in API
+          description:
+            The identifier of the message, which can be referenced in API
             endpoints.
           type: string
         object:
@@ -16471,11 +16681,13 @@ components:
           description: The Unix timestamp (in seconds) for when the message was created.
           type: integer
         thread_id:
-          description: The [thread](/docs/api-reference/threads) ID that this message
+          description:
+            The [thread](/docs/api-reference/threads) ID that this message
             belongs to.
           type: string
         status:
-          description: The status of the message, which can be either `in_progress`,
+          description:
+            The status of the message, which can be either `in_progress`,
             `incomplete`, or `completed`.
           type: string
           enum:
@@ -16483,7 +16695,8 @@ components:
             - incomplete
             - completed
         incomplete_details:
-          description: On an incomplete message, details about why the message is
+          description:
+            On an incomplete message, details about why the message is
             incomplete.
           type: object
           properties:
@@ -16504,7 +16717,8 @@ components:
           type: integer
           nullable: true
         incomplete_at:
-          description: The Unix timestamp (in seconds) for when the message was marked as
+          description:
+            The Unix timestamp (in seconds) for when the message was marked as
             incomplete.
           type: integer
           nullable: true
@@ -16531,7 +16745,8 @@ components:
           type: string
           nullable: true
         run_id:
-          description: The ID of the [run](/docs/api-reference/runs) associated with the
+          description:
+            The ID of the [run](/docs/api-reference/runs) associated with the
             creation of this message. Value is `null` when messages are created
             manually using the create message or create thread endpoints.
           type: string
@@ -16552,7 +16767,8 @@ components:
                     - $ref: "#/components/schemas/AssistantToolsCode"
                     - $ref: "#/components/schemas/AssistantToolsFileSearchTypeOnly"
                   x-oaiExpandable: true
-          description: A list of files attached to the message, and the tools they were
+          description:
+            A list of files attached to the message, and the tools they were
             added to.
           nullable: true
         metadata:
@@ -16632,7 +16848,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [message](/docs/api-reference/messages/object) is
+          description:
+            Occurs when a [message](/docs/api-reference/messages/object) is
             created.
           x-oaiMeta:
             dataDescription: "`data` is a [message](/docs/api-reference/messages/object)"
@@ -16647,7 +16864,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [message](/docs/api-reference/messages/object) moves
+          description:
+            Occurs when a [message](/docs/api-reference/messages/object) moves
             to an `in_progress` state.
           x-oaiMeta:
             dataDescription: "`data` is a [message](/docs/api-reference/messages/object)"
@@ -16679,7 +16897,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [message](/docs/api-reference/messages/object) is
+          description:
+            Occurs when a [message](/docs/api-reference/messages/object) is
             completed.
           x-oaiMeta:
             dataDescription: "`data` is a [message](/docs/api-reference/messages/object)"
@@ -16694,7 +16913,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [message](/docs/api-reference/messages/object) ends
+          description:
+            Occurs when a [message](/docs/api-reference/messages/object) ends
             before it is completed.
           x-oaiMeta:
             dataDescription: "`data` is a [message](/docs/api-reference/messages/object)"
@@ -16959,7 +17179,8 @@ components:
         status:
           type: string
           deprecated: true
-          description: Deprecated. The current status of the file, which can be either
+          description:
+            Deprecated. The current status of the file, which can be either
             `uploaded`, `processed`, or `error`.
           enum:
             - uploaded
@@ -16968,7 +17189,8 @@ components:
         status_details:
           type: string
           deprecated: true
-          description: Deprecated. For details on why a fine-tuning training file failed
+          description:
+            Deprecated. For details on why a fine-tuning training file failed
             validation, see the `error` field on `fine_tuning.job`.
       required:
         - id
@@ -16992,7 +17214,8 @@ components:
     OtherChunkingStrategyResponseParam:
       type: object
       title: Other Chunking Strategy
-      description: This is returned when the chunking strategy is unknown. Typically,
+      description:
+        This is returned when the chunking strategy is unknown. Typically,
         this is because the file was indexed before the `chunking_strategy`
         concept was introduced in the API.
       additionalProperties: false
@@ -17031,7 +17254,8 @@ components:
         archived_at:
           type: integer
           nullable: true
-          description: The Unix timestamp (in seconds) of when the project was archived or
+          description:
+            The Unix timestamp (in seconds) of when the project was archived or
             `null`.
         status:
           type: string
@@ -17211,7 +17435,8 @@ components:
           description: "`owner` or `member`"
         created_at:
           type: integer
-          description: The Unix timestamp (in seconds) of when the service account was
+          description:
+            The Unix timestamp (in seconds) of when the service account was
             created
       required:
         - object
@@ -17452,7 +17677,8 @@ components:
           description: The event type, must be "conversation.item.create".
         previous_item_id:
           type: string
-          description: The ID of the preceding item after which the new item will be
+          description:
+            The ID of the preceding item after which the new item will be
             inserted.
         item:
           type: object
@@ -17553,7 +17779,8 @@ components:
           }
     RealtimeClientEventConversationItemTruncate:
       type: object
-      description: Send this event when you want to truncate a previous assistant
+      description:
+        Send this event when you want to truncate a previous assistant
         message’s audio.
       properties:
         event_id:
@@ -17696,7 +17923,8 @@ components:
               description: Instructions for the model.
             voice:
               type: string
-              description: The voice the model uses to respond - one of `alloy`, `echo`, or
+              description:
+                The voice the model uses to respond - one of `alloy`, `echo`, or
                 `shimmer`.
             output_audio_format:
               type: string
@@ -17731,7 +17959,8 @@ components:
                 - type: string
                   enum:
                     - inf
-              description: Maximum number of output tokens for a single assistant response,
+              description:
+                Maximum number of output tokens for a single assistant response,
                 inclusive of tool calls. Provide an integer between 1 and 4096
                 to limit output tokens, or "inf" for the maximum available
                 tokens for a given model. Defaults to "inf".
@@ -17788,27 +18017,32 @@ components:
               type: array
               items:
                 type: string
-              description: The set of modalities the model can respond with. To disable audio,
+              description:
+                The set of modalities the model can respond with. To disable audio,
                 set this to ["text"].
             instructions:
               type: string
               description: The default system instructions prepended to model calls.
             voice:
               type: string
-              description: The voice the model uses to respond - one of `alloy`, `echo`,
+              description:
+                The voice the model uses to respond - one of `alloy`, `echo`,
                 or  `shimmer`. Cannot be changed once the model has responded
                 with audio  at least once.
             input_audio_format:
               type: string
-              description: The format of input audio. Options are "pcm16", "g711_ulaw", or
+              description:
+                The format of input audio. Options are "pcm16", "g711_ulaw", or
                 "g711_alaw".
             output_audio_format:
               type: string
-              description: The format of output audio. Options are "pcm16", "g711_ulaw", or
+              description:
+                The format of output audio. Options are "pcm16", "g711_ulaw", or
                 "g711_alaw".
             input_audio_transcription:
               type: object
-              description: Configuration for input audio transcription. Can be set to `null`
+              description:
+                Configuration for input audio transcription. Can be set to `null`
                 to turn off.
               properties:
                 model:
@@ -17850,7 +18084,8 @@ components:
                     description: Parameters of the function in JSON Schema.
             tool_choice:
               type: string
-              description: How the model chooses tools. Options are "auto", "none",
+              description:
+                How the model chooses tools. Options are "auto", "none",
                 "required", or specify a function.
             temperature:
               type: number
@@ -17861,7 +18096,8 @@ components:
                 - type: string
                   enum:
                     - inf
-              description: Maximum number of output tokens for a single assistant response,
+              description:
+                Maximum number of output tokens for a single assistant response,
                 inclusive of tool calls. Provide an integer between 1 and 4096
                 to limit output tokens, or "inf" for the maximum available
                 tokens for a given model. Defaults to "inf".
@@ -18158,7 +18394,8 @@ components:
           }
     RealtimeServerEventConversationItemTruncated:
       type: object
-      description: Returned when an earlier assistant audio message item is truncated
+      description:
+        Returned when an earlier assistant audio message item is truncated
         by the client.
       properties:
         event_id:
@@ -18221,7 +18458,8 @@ components:
               description: Parameter related to the error, if any.
             event_id:
               type: string
-              description: The event_id of the client event that caused the error, if
+              description:
+                The event_id of the client event that caused the error, if
                 applicable.
       required:
         - event_id
@@ -18265,7 +18503,8 @@ components:
           }
     RealtimeServerEventInputAudioBufferCommitted:
       type: object
-      description: Returned when an input audio buffer is committed, either by the
+      description:
+        Returned when an input audio buffer is committed, either by the
         client or automatically in server VAD mode.
       properties:
         event_id:
@@ -18276,7 +18515,8 @@ components:
           description: The event type, must be "input_audio_buffer.committed".
         previous_item_id:
           type: string
-          description: The ID of the preceding item after which the new item will be
+          description:
+            The ID of the preceding item after which the new item will be
             inserted.
         item_id:
           type: string
@@ -18311,7 +18551,8 @@ components:
           description: Milliseconds since the session started when speech was detected.
         item_id:
           type: string
-          description: The ID of the user message item that will be created when speech
+          description:
+            The ID of the user message item that will be created when speech
             stops.
       required:
         - event_id
@@ -18361,7 +18602,8 @@ components:
           }
     RealtimeServerEventRateLimitsUpdated:
       type: object
-      description: Emitted after every "response.done" event to indicate the updated
+      description:
+        Emitted after every "response.done" event to indicate the updated
         rate limits.
       properties:
         event_id:
@@ -18378,7 +18620,8 @@ components:
             properties:
               name:
                 type: string
-                description: The name of the rate limit ("requests", "tokens", "input_tokens",
+                description:
+                  The name of the rate limit ("requests", "tokens", "input_tokens",
                   "output_tokens").
               limit:
                 type: integer
@@ -18463,7 +18706,8 @@ components:
           }
     RealtimeServerEventResponseAudioDone:
       type: object
-      description: Returned when the model-generated audio is done. Also emitted when
+      description:
+        Returned when the model-generated audio is done. Also emitted when
         a Response is interrupted, incomplete, or cancelled.
       properties:
         event_id:
@@ -18505,7 +18749,8 @@ components:
           }
     RealtimeServerEventResponseAudioTranscriptDelta:
       type: object
-      description: Returned when the model-generated transcription of audio output is
+      description:
+        Returned when the model-generated transcription of audio output is
         updated.
       properties:
         event_id:
@@ -18552,7 +18797,8 @@ components:
           }
     RealtimeServerEventResponseAudioTranscriptDone:
       type: object
-      description: Returned when the model-generated transcription of audio output is
+      description:
+        Returned when the model-generated transcription of audio output is
         done streaming. Also emitted when a Response is interrupted, incomplete,
         or cancelled.
       properties:
@@ -18600,7 +18846,8 @@ components:
           }
     RealtimeServerEventResponseContentPartAdded:
       type: object
-      description: Returned when a new content part is added to an assistant message
+      description:
+        Returned when a new content part is added to an assistant message
         item during response generation.
       properties:
         event_id:
@@ -18663,7 +18910,8 @@ components:
           }
     RealtimeServerEventResponseContentPartDone:
       type: object
-      description: Returned when a content part is done streaming in an assistant
+      description:
+        Returned when a content part is done streaming in an assistant
         message item. Also emitted when a Response is interrupted, incomplete,
         or cancelled.
       properties:
@@ -18784,7 +19032,8 @@ components:
           }
     RealtimeServerEventResponseDone:
       type: object
-      description: Returned when a Response is done streaming. Always emitted, no
+      description:
+        Returned when a Response is done streaming. Always emitted, no
         matter the final state.
       properties:
         event_id:
@@ -18805,7 +19054,8 @@ components:
               description: The object type, must be "realtime.response".
             status:
               type: string
-              description: The final status of the response ("completed", "cancelled",
+              description:
+                The final status of the response ("completed", "cancelled",
                 "failed", "incomplete").
             status_details:
               type: object
@@ -18905,7 +19155,8 @@ components:
           }
     RealtimeServerEventResponseFunctionCallArgumentsDone:
       type: object
-      description: Returned when the model-generated function call arguments are done
+      description:
+        Returned when the model-generated function call arguments are done
         streaming. Also emitted when a Response is interrupted, incomplete, or
         cancelled.
       properties:
@@ -19209,7 +19460,8 @@ components:
           }
     RealtimeServerEventSessionCreated:
       type: object
-      description: Returned when a session is created. Emitted automatically when a
+      description:
+        Returned when a session is created. Emitted automatically when a
         new connection is established.
       properties:
         event_id:
@@ -19241,7 +19493,8 @@ components:
               description: The default system instructions.
             voice:
               type: string
-              description: The voice the model uses to respond - one of `alloy`, `echo`, or
+              description:
+                The voice the model uses to respond - one of `alloy`, `echo`, or
                 `shimmer`.
             input_audio_format:
               type: string
@@ -19372,7 +19625,8 @@ components:
               description: The default system instructions.
             voice:
               type: string
-              description: The voice the model uses to respond - one of `alloy`, `echo`, or
+              description:
+                The voice the model uses to respond - one of `alloy`, `echo`, or
                 `shimmer`.
             input_audio_format:
               type: string
@@ -19493,11 +19747,13 @@ components:
           properties:
             description:
               type: string
-              description: A description of what the response format is for, used by the model
+              description:
+                A description of what the response format is for, used by the model
                 to determine how to respond in the format.
             name:
               type: string
-              description: The name of the response format. Must be a-z, A-Z, 0-9, or contain
+              description:
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
                 underscores and dashes, with a maximum length of 64.
             schema:
               $ref: "#/components/schemas/ResponseFormatJsonSchemaSchema"
@@ -19505,7 +19761,8 @@ components:
               type: boolean
               nullable: true
               default: false
-              description: Whether to enable strict schema adherence when generating the
+              description:
+                Whether to enable strict schema adherence when generating the
                 output. If set to true, the model will always follow the exact
                 schema defined in the `schema` field. Only a subset of JSON
                 Schema is supported when `strict` is `true`. To learn more, read
@@ -19532,7 +19789,8 @@ components:
         - type
     RunCompletionUsage:
       type: object
-      description: Usage statistics related to the run. This value will be `null` if
+      description:
+        Usage statistics related to the run. This value will be `null` if
         the run is not in a terminal state (i.e. `in_progress`, `queued`, etc.).
       properties:
         completion_tokens:
@@ -19566,15 +19824,18 @@ components:
           description: The Unix timestamp (in seconds) for when the run was created.
           type: integer
         thread_id:
-          description: The ID of the [thread](/docs/api-reference/threads) that was
+          description:
+            The ID of the [thread](/docs/api-reference/threads) that was
             executed on as a part of this run.
           type: string
         assistant_id:
-          description: The ID of the [assistant](/docs/api-reference/assistants) used for
+          description:
+            The ID of the [assistant](/docs/api-reference/assistants) used for
             execution of this run.
           type: string
         status:
-          description: The status of the run, which can be either `queued`, `in_progress`,
+          description:
+            The status of the run, which can be either `queued`, `in_progress`,
             `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`,
             `incomplete`, or `expired`.
           type: string
@@ -19590,7 +19851,8 @@ components:
             - expired
         required_action:
           type: object
-          description: Details on the action required to continue the run. Will be `null`
+          description:
+            Details on the action required to continue the run. Will be `null`
             if no action is required.
           nullable: true
           properties:
@@ -19615,7 +19877,8 @@ components:
             - submit_tool_outputs
         last_error:
           type: object
-          description: The last error associated with this run. Will be `null` if there
+          description:
+            The last error associated with this run. Will be `null` if there
             are no errors.
           nullable: true
           properties:
@@ -19653,20 +19916,23 @@ components:
           type: integer
           nullable: true
         incomplete_details:
-          description: Details on why the run is incomplete. Will be `null` if the run is
+          description:
+            Details on why the run is incomplete. Will be `null` if the run is
             not incomplete.
           type: object
           nullable: true
           properties:
             reason:
-              description: The reason why the run is incomplete. This will point to which
+              description:
+                The reason why the run is incomplete. This will point to which
                 specific token limit was reached over the course of the run.
               type: string
               enum:
                 - max_completion_tokens
                 - max_prompt_tokens
         model:
-          description: The model that the [assistant](/docs/api-reference/assistants) used
+          description:
+            The model that the [assistant](/docs/api-reference/assistants) used
             for this run.
           type: string
         instructions:
@@ -19697,12 +19963,14 @@ components:
         usage:
           $ref: "#/components/schemas/RunCompletionUsage"
         temperature:
-          description: The sampling temperature used for this run. If not set, defaults to
+          description:
+            The sampling temperature used for this run. If not set, defaults to
             1.
           type: number
           nullable: true
         top_p:
-          description: The nucleus sampling value used for this run. If not set, defaults
+          description:
+            The nucleus sampling value used for this run. If not set, defaults
             to 1.
           type: number
           nullable: true
@@ -19798,7 +20066,8 @@ components:
           }
     RunStepCompletionUsage:
       type: object
-      description: Usage statistics related to the run step. This value will be `null`
+      description:
+        Usage statistics related to the run step. This value will be `null`
         while the run step's status is `in_progress`.
       properties:
         completion_tokens:
@@ -19823,7 +20092,8 @@ components:
         streaming.
       properties:
         id:
-          description: The identifier of the run step, which can be referenced in API
+          description:
+            The identifier of the run step, which can be referenced in API
             endpoints.
           type: string
         object:
@@ -19911,16 +20181,19 @@ components:
               description: The input to the Code Interpreter tool call.
             outputs:
               type: array
-              description: The outputs from the Code Interpreter tool call. Code Interpreter
+              description:
+                The outputs from the Code Interpreter tool call. Code Interpreter
                 can output one or more items, including text (`logs`) or images
                 (`image`). Each of these are represented by a different object
                 type.
               items:
                 type: object
                 oneOf:
-                  - $ref: "#/components/schemas/RunStepDeltaStepDetailsToolCallsCodeOutputLogsObjec\
+                  - $ref:
+                      "#/components/schemas/RunStepDeltaStepDetailsToolCallsCodeOutputLogsObjec\
                       t"
-                  - $ref: "#/components/schemas/RunStepDeltaStepDetailsToolCallsCodeOutputImageObje\
+                  - $ref:
+                      "#/components/schemas/RunStepDeltaStepDetailsToolCallsCodeOutputImageObje\
                       ct"
                 x-oaiExpandable: true
       required:
@@ -19978,7 +20251,8 @@ components:
           description: The ID of the tool call object.
         type:
           type: string
-          description: The type of tool call. This is always going to be `file_search` for
+          description:
+            The type of tool call. This is always going to be `file_search` for
             this type of tool call.
           enum:
             - file_search
@@ -20002,7 +20276,8 @@ components:
           description: The ID of the tool call object.
         type:
           type: string
-          description: The type of tool call. This is always going to be `function` for
+          description:
+            The type of tool call. This is always going to be `function` for
             this type of tool call.
           enum:
             - function
@@ -20018,7 +20293,8 @@ components:
               description: The arguments passed to the function.
             output:
               type: string
-              description: The output of the function. This will be `null` if the outputs have
+              description:
+                The output of the function. This will be `null` if the outputs have
                 not been [submitted](/docs/api-reference/runs/submitToolOutputs)
                 yet.
               nullable: true
@@ -20096,7 +20372,8 @@ components:
               description: The input to the Code Interpreter tool call.
             outputs:
               type: array
-              description: The outputs from the Code Interpreter tool call. Code Interpreter
+              description:
+                The outputs from the Code Interpreter tool call. Code Interpreter
                 can output one or more items, including text (`logs`) or images
                 (`image`). Each of these are represented by a different object
                 type.
@@ -20155,7 +20432,8 @@ components:
           description: The ID of the tool call object.
         type:
           type: string
-          description: The type of tool call. This is always going to be `file_search` for
+          description:
+            The type of tool call. This is always going to be `file_search` for
             this type of tool call.
           enum:
             - file_search
@@ -20165,7 +20443,8 @@ components:
           x-oaiTypeLabel: map
           properties:
             ranking_options:
-              $ref: "#/components/schemas/RunStepDetailsToolCallsFileSearchRankingOptionsObje\
+              $ref:
+                "#/components/schemas/RunStepDetailsToolCallsFileSearchRankingOptionsObje\
                 ct"
             results:
               type: array
@@ -20188,7 +20467,8 @@ components:
             - default_2024_08_21
         score_threshold:
           type: number
-          description: The score threshold for the file search. All values must be a
+          description:
+            The score threshold for the file search. All values must be a
             floating point number between 0 and 1.
           minimum: 0
           maximum: 1
@@ -20209,13 +20489,15 @@ components:
           description: The name of the file that result was found in.
         score:
           type: number
-          description: The score of the result. All values must be a floating point number
+          description:
+            The score of the result. All values must be a floating point number
             between 0 and 1.
           minimum: 0
           maximum: 1
         content:
           type: array
-          description: The content of the result that was found. The content is only
+          description:
+            The content of the result that was found. The content is only
             included if requested via the include query parameter.
           items:
             type: object
@@ -20241,7 +20523,8 @@ components:
           description: The ID of the tool call object.
         type:
           type: string
-          description: The type of tool call. This is always going to be `function` for
+          description:
+            The type of tool call. This is always going to be `function` for
             this type of tool call.
           enum:
             - function
@@ -20257,7 +20540,8 @@ components:
               description: The arguments passed to the function.
             output:
               type: string
-              description: The output of the function. This will be `null` if the outputs have
+              description:
+                The output of the function. This will be `null` if the outputs have
                 not been [submitted](/docs/api-reference/runs/submitToolOutputs)
                 yet.
               nullable: true
@@ -20301,7 +20585,8 @@ components:
         Represents a step in execution of a run.
       properties:
         id:
-          description: The identifier of the run step, which can be referenced in API
+          description:
+            The identifier of the run step, which can be referenced in API
             endpoints.
           type: string
         object:
@@ -20320,18 +20605,21 @@ components:
           description: The ID of the [thread](/docs/api-reference/threads) that was run.
           type: string
         run_id:
-          description: The ID of the [run](/docs/api-reference/runs) that this run step is
+          description:
+            The ID of the [run](/docs/api-reference/runs) that this run step is
             a part of.
           type: string
         type:
-          description: The type of run step, which can be either `message_creation` or
+          description:
+            The type of run step, which can be either `message_creation` or
             `tool_calls`.
           type: string
           enum:
             - message_creation
             - tool_calls
         status:
-          description: The status of the run step, which can be either `in_progress`,
+          description:
+            The status of the run step, which can be either `in_progress`,
             `cancelled`, `failed`, `completed`, or `expired`.
           type: string
           enum:
@@ -20349,7 +20637,8 @@ components:
           x-oaiExpandable: true
         last_error:
           type: object
-          description: The last error associated with this run step. Will be `null` if
+          description:
+            The last error associated with this run step. Will be `null` if
             there are no errors.
           nullable: true
           properties:
@@ -20366,7 +20655,8 @@ components:
             - code
             - message
         expired_at:
-          description: The Unix timestamp (in seconds) for when the run step expired. A
+          description:
+            The Unix timestamp (in seconds) for when the run step expired. A
             step is considered expired if the parent run is expired.
           type: integer
           nullable: true
@@ -20453,7 +20743,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             is created.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20468,7 +20759,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             moves to an `in_progress` state.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20500,7 +20792,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             is completed.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20515,7 +20808,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             fails.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20530,7 +20824,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             is cancelled.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20545,7 +20840,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run step](/docs/api-reference/run-steps/step-object)
+          description:
+            Occurs when a [run step](/docs/api-reference/run-steps/step-object)
             expires.
           x-oaiMeta:
             dataDescription: "`data` is a [run step](/docs/api-reference/run-steps/step-object)"
@@ -20576,7 +20872,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run](/docs/api-reference/runs/object) moves to a
+          description:
+            Occurs when a [run](/docs/api-reference/runs/object) moves to a
             `queued` status.
           x-oaiMeta:
             dataDescription: "`data` is a [run](/docs/api-reference/runs/object)"
@@ -20591,7 +20888,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run](/docs/api-reference/runs/object) moves to an
+          description:
+            Occurs when a [run](/docs/api-reference/runs/object) moves to an
             `in_progress` status.
           x-oaiMeta:
             dataDescription: "`data` is a [run](/docs/api-reference/runs/object)"
@@ -20606,7 +20904,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run](/docs/api-reference/runs/object) moves to a
+          description:
+            Occurs when a [run](/docs/api-reference/runs/object) moves to a
             `requires_action` status.
           x-oaiMeta:
             dataDescription: "`data` is a [run](/docs/api-reference/runs/object)"
@@ -20635,7 +20934,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run](/docs/api-reference/runs/object) ends with
+          description:
+            Occurs when a [run](/docs/api-reference/runs/object) ends with
             status `incomplete`.
           x-oaiMeta:
             dataDescription: "`data` is a [run](/docs/api-reference/runs/object)"
@@ -20664,7 +20964,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a [run](/docs/api-reference/runs/object) moves to a
+          description:
+            Occurs when a [run](/docs/api-reference/runs/object) moves to a
             `cancelling` status.
           x-oaiMeta:
             dataDescription: "`data` is a [run](/docs/api-reference/runs/object)"
@@ -20702,12 +21003,14 @@ components:
       properties:
         id:
           type: string
-          description: The ID of the tool call. This ID must be referenced when you submit
+          description:
+            The ID of the tool call. This ID must be referenced when you submit
             the tool outputs in using the [Submit tool outputs to
             run](/docs/api-reference/runs/submitToolOutputs) endpoint.
         type:
           type: string
-          description: The type of tool call the output is required for. For now, this is
+          description:
+            The type of tool call the output is required for. For now, this is
             always `function`.
           enum:
             - function
@@ -20736,7 +21039,8 @@ components:
           type: integer
           minimum: 100
           maximum: 4096
-          description: The maximum number of tokens in each chunk. The default value is
+          description:
+            The maximum number of tokens in each chunk. The default value is
             `800`. The minimum value is `100` and the maximum value is `4096`.
         chunk_overlap_tokens:
           type: integer
@@ -20792,7 +21096,8 @@ components:
             properties:
               tool_call_id:
                 type: string
-                description: The ID of the tool call in the `required_action` object within the
+                description:
+                  The ID of the tool call in the `required_action` object within the
                   run object the output is being submitted for.
               output:
                 type: string
@@ -20898,7 +21203,8 @@ components:
           required:
             - event
             - data
-          description: Occurs when a new [thread](/docs/api-reference/threads/object) is
+          description:
+            Occurs when a new [thread](/docs/api-reference/threads/object) is
             created.
           x-oaiMeta:
             dataDescription: "`data` is a [thread](/docs/api-reference/threads/object)"
@@ -20934,17 +21240,20 @@ components:
         avg_logprob:
           type: number
           format: float
-          description: Average logprob of the segment. If the value is lower than -1,
+          description:
+            Average logprob of the segment. If the value is lower than -1,
             consider the logprobs failed.
         compression_ratio:
           type: number
           format: float
-          description: Compression ratio of the segment. If the value is greater than 2.4,
+          description:
+            Compression ratio of the segment. If the value is greater than 2.4,
             consider the compression failed.
         no_speech_prob:
           type: number
           format: float
-          description: Probability of no speech in the segment. If the value is higher
+          description:
+            Probability of no speech in the segment. If the value is higher
             than 1.0 and the `avg_logprob` is below -1, consider this segment
             silent.
       required:
@@ -20979,12 +21288,14 @@ components:
     TruncationObject:
       type: object
       title: Thread Truncation Controls
-      description: Controls for how a thread will be truncated prior to the run. Use
+      description:
+        Controls for how a thread will be truncated prior to the run. Use
         this to control the intial context window of the run.
       properties:
         type:
           type: string
-          description: The truncation strategy to use for the thread. The default is
+          description:
+            The truncation strategy to use for the thread. The default is
             `auto`. If set to `last_messages`, the thread will be truncated to
             the n most recent messages in the thread. When set to `auto`,
             messages in the middle of the thread will be dropped to fit the
@@ -21028,7 +21339,8 @@ components:
       properties:
         id:
           type: string
-          description: The Upload unique identifier, which can be referenced in API
+          description:
+            The Upload unique identifier, which can be referenced in API
             endpoints.
         created_at:
           type: integer
@@ -21102,7 +21414,8 @@ components:
       properties:
         id:
           type: string
-          description: The upload Part unique identifier, which can be referenced in API
+          description:
+            The upload Part unique identifier, which can be referenced in API
             endpoints.
         created_at:
           type: integer
@@ -21229,13 +21542,15 @@ components:
       description: The expiration policy for a vector store.
       properties:
         anchor:
-          description: "Anchor timestamp after which the expiration policy applies.
+          description:
+            "Anchor timestamp after which the expiration policy applies.
             Supported anchors: `last_active_at`."
           type: string
           enum:
             - last_active_at
         days:
-          description: The number of days after the anchor time that the vector store will
+          description:
+            The number of days after the anchor time that the vector store will
             expire.
           type: integer
           minimum: 1
@@ -21257,7 +21572,8 @@ components:
           enum:
             - vector_store.files_batch
         created_at:
-          description: The Unix timestamp (in seconds) for when the vector store files
+          description:
+            The Unix timestamp (in seconds) for when the vector store files
             batch was created.
           type: integer
         vector_store_id:
@@ -21266,7 +21582,8 @@ components:
             [File](/docs/api-reference/files) is attached to.
           type: string
         status:
-          description: The status of the vector store files batch, which can be either
+          description:
+            The status of the vector store files batch, which can be either
             `in_progress`, `completed`, `cancelled` or `failed`.
           type: string
           enum:
@@ -21337,11 +21654,13 @@ components:
           enum:
             - vector_store.file
         usage_bytes:
-          description: The total vector store usage in bytes. Note that this may be
+          description:
+            The total vector store usage in bytes. Note that this may be
             different from the original file size.
           type: integer
         created_at:
-          description: The Unix timestamp (in seconds) for when the vector store file was
+          description:
+            The Unix timestamp (in seconds) for when the vector store file was
             created.
           type: integer
         vector_store_id:
@@ -21361,7 +21680,8 @@ components:
             - failed
         last_error:
           type: object
-          description: The last error associated with this vector store file. Will be
+          description:
+            The last error associated with this vector store file. Will be
             `null` if there are no errors.
           nullable: true
           properties:
@@ -21416,7 +21736,8 @@ components:
     VectorStoreObject:
       type: object
       title: Vector store
-      description: A vector store is a collection of processed files can be used by
+      description:
+        A vector store is a collection of processed files can be used by
         the `file_search` tool.
       properties:
         id:
@@ -21428,7 +21749,8 @@ components:
           enum:
             - vector_store
         created_at:
-          description: The Unix timestamp (in seconds) for when the vector store was
+          description:
+            The Unix timestamp (in seconds) for when the vector store was
             created.
           type: integer
         name:
@@ -21462,7 +21784,8 @@ components:
             - cancelled
             - total
         status:
-          description: The status of the vector store, which can be either `expired`,
+          description:
+            The status of the vector store, which can be either `expired`,
             `in_progress`, or `completed`. A status of `completed` indicates
             that the vector store is ready for use.
           type: string
@@ -21473,12 +21796,14 @@ components:
         expires_after:
           $ref: "#/components/schemas/VectorStoreExpirationAfter"
         expires_at:
-          description: The Unix timestamp (in seconds) for when the vector store will
+          description:
+            The Unix timestamp (in seconds) for when the vector store will
             expire.
           type: integer
           nullable: true
         last_active_at:
-          description: The Unix timestamp (in seconds) for when the vector store was last
+          description:
+            The Unix timestamp (in seconds) for when the vector store was last
             active.
           type: integer
           nullable: true
@@ -22034,7 +22359,8 @@ x-oaiMeta:
       navigationGroup: administration
     - id: invite
       title: Invites
-      description: Invite and manage invitations for an organization. Invited users
+      description:
+        Invite and manage invitations for an organization. Invited users
         are automatically added to the Default project.
       navigationGroup: administration
       sections:
