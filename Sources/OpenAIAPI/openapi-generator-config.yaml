@@ -1,7 +1,7 @@
 generate:
     - types
     - client
-accessModifier: internal
+accessModifier: package
 filter:
     tags:
         - Audio
