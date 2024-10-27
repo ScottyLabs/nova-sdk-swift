@@ -1,0 +1,9 @@
+generate:
+    - types
+    - client
+accessModifier: package
+filter:
+    tags:
+        - Audio
+        - Chat
+        - Images
