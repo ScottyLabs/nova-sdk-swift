@@ -3,8 +3,8 @@ import Foundation
 public class Nova: @unchecked Sendable {
     
     private init() {
-            fatalError("This class should not be instantiated")
-        }
+        fatalError("This class should not be instantiated")
+    }
     
     internal struct APIKeys: Codable {
         let openAI: String?
@@ -23,7 +23,7 @@ public class Nova: @unchecked Sendable {
             return keys
         }
     }
-
+    
     public static func setup(teamID: String) {
         guard !_isInitialized else {
             fatalError("Attempted to configure the Nova SDK multiple times. Please only call setup once.")
