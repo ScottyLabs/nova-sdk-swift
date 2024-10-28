@@ -1,4 +1,5 @@
 import Foundation
+@preconcurrency import SwiftOpenAI
 
 public class Nova: @unchecked Sendable {
     
@@ -23,6 +24,11 @@ public class Nova: @unchecked Sendable {
             return keys
         }
     }
+    
+    internal static let openAIService: OpenAIService = {
+        let key = openAIKey
+        return OpenAIServiceFactory.service(apiKey: key)
+    }()
     
     public static func setup(teamID: String) {
         guard !_isInitialized else {
